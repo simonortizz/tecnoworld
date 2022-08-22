@@ -1,0 +1,59 @@
+/* RESET*/
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+
+/*PORTADA*/
+header {
+    height: 400px;
+}
+
+
+/*BARRA NAVEGACION*/
+.barra-navegacion {
+    // background-color: #BBE8DD;
+    background: #11998e;  
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
+    background: linear-gradient(to right, #38ef7d, #11998e); 
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .logo img{
+        width: 120%;
+    }
+}
+
+/*TITULO*/
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 55px;
+}
+
+
+/*PASOS A COMPRAR*/
+.pasos-compra {
+    background: #5BFFAF;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
