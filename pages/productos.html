@@ -31,28 +31,103 @@
 
     <!-- BARRA NAVEGACION -->
     <div class="container-fluid barra-navegacion">
-      <div class="productos">
-        <a href="productos.html"
-          ><img src="../images/iconos/productos.png" title="PRODUCTOS"
-        /></a>
-      </div>
       <div class="logo">
         <a href="../index.html"
           ><img src="../images/iconos/icono-jt-black.png" title="HOME"
         /></a>
       </div>
-
+      <div class="productos">
+        <h1 class="fw-bold display-5">TECNOWORLD</h1>
+      </div>
       <div class="carrito">
-        <button class="btn">
+        <button
+          id="toggleMyModal"
+          type="button"
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
           <img src="../images/iconos/carrito1.png" title="CARRITO" />
         </button>
       </div>
     </div>
 
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="items"></tbody>
+                <tfoot>
+                  <tr id="footer">
+                    <th scope="row" colspan="6">
+                      Carrito vacío - comience a comprar!
+                    </th>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="row" id="cards"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-primary" id="finalizar">
+              Terminar compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
     <!-- TITULO -->
     <div class="titulo">
-      <h1 class="display-5 fw-bold">PRODUCTOS</h1>
+      <h1 class="display-5">PRODUCTOS</h1>
     </div>
+
+    <!-- CONTENEDOR DE CARDS -->
+    <section class="d-flex justify-content-center mt-5">
+      <article class="container">
+        <div
+          id="contenedor-productos"
+          class="row row-cols-1 row-cols-md-3 g-4"
+        ></div>
+      </article>
+    </section>
 
     <!-- FOOTER -->
     <footer class="bg-dark text-center text-white">
@@ -101,7 +176,7 @@
                 <div class="form-outline form-white mb-4">
                   <input
                     type="email"
-                    id="form5Example21"
+                    id="form5Example21 inputSuscripcion"
                     class="form-control"
                   />
                   <label class="form-label" for="form5Example21">Email</label>
@@ -112,7 +187,11 @@
               <!--Grid column-->
               <div class="col-auto">
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-outline-light mb-4">
+                <button
+                  type="submit"
+                  class="btn btn-outline-light mb-4"
+                  id="botonSuscripcion"
+                >
                   Subscribirme
                 </button>
               </div>
@@ -133,7 +212,8 @@
     </footer>
     <!-- Footer -->
 
-    <!-- JS FILES -->
+    <!-- CDN SWAL -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- CDN BOOTSTRAP -->
     <script
@@ -141,6 +221,9 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+
+    <!-- SEGUNDO LINK SWAL -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 
     <!-- ARCHIVO JS -->
     <script src="../js-files/prodcutos.js"></script>
