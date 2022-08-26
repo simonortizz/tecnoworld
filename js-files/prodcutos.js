@@ -212,22 +212,14 @@ function dibujarCatalogoProductos() {
 
 }
 
+
+
 let finalizar = document.querySelector('#finalizar')
 finalizar.onclick = ()=> {
     Swal.fire({
-        title: 'Disfrute su compra',
+        title: '¡La compra se ha realizado con exito!',
         imageUrl: '../images/tecnologia-y-trabajo-social-8-320.webp',
         imageWidth: 400,
         imageHeight: 200,
       })
 }
-
-
-//STORAGE
-
-
-
-
-
-
-
