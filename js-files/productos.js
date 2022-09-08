@@ -1,3 +1,8 @@
+//PRECIO DOLAR
+obtenerValorDolar();
+let dolarVenta;
+
+
 class Producto {
     constructor(id, nombre, precio, foto) {
         this.id = id;
@@ -37,6 +42,7 @@ cargarProductos();
 cargarCarrito();
 dibujarCarrito();
 dibujarCatalogoProductos();
+
 
 /**
  * Definiciones de funciones
@@ -157,7 +163,8 @@ function crearCard(producto) {
     cuerpoCarta.className = "card-body";
     cuerpoCarta.innerHTML = `
         <h5>${producto.nombre}</h5>
-        <p>$ ${producto.precio} USD</p>
+        <p> $${producto.precio}</p>
+        <p>Precio U$D ${(producto.precio/dolarVenta).toFixed(1)}</p>
     `;
     cuerpoCarta.append(botonAgregar);
 
@@ -220,7 +227,7 @@ function dibujarCatalogoProductos() {
 }
 
 
-
+//BOTON FINALIZAR COMPRA
 let finalizar = document.querySelector('#finalizar')
 finalizar.onclick = ()=> {
     Swal.fire({
@@ -230,3 +237,19 @@ finalizar.onclick = ()=> {
         imageHeight: 200,
       })
 }
+
+
+//API
+async function obtenerValorDolar() {
+    
+    const URLDOLAR = "https://cors-anywhere.herokuapp.com/https://api-dolar-argentina.herokuapp.com/api/dolarblue";
+    const resp=await fetch(URLDOLAR)
+    const data=await resp.json()
+    
+    dolarVenta = data.venta;
+    dibujarCatalogoProductos();
+}
+
+
+//LINK PERMISO DE API
+//https://cors-anywhere.herokuapp.com/corsdemo
