@@ -34,20 +34,14 @@ const contenedorCarritoCompras = document.querySelector("#items")
 
 const contenedorFooterCarrito = document.querySelector("#footer");
 
-/**
- * Ejecución de funciones
- */
 
+//FUNCIONES EJECUTADAS
 cargarProductos();
 cargarCarrito();
 dibujarCarrito();
 dibujarCatalogoProductos();
 
-
-/**
- * Definiciones de funciones
- */
-
+//FUNCIONES DEFINIDAS
 function cargarProductos() {
     productos.push( new Producto (01, 'MONITOR LED 22" ASUS FULL HD 60Hz 1Ms VP228HE-J', 41339, '../images/monitores/monitor1.jpg'));
 productos.push( new Producto (02, 'MONITOR LED 19.5" GFAST T-195 60Hz 14Ms VGA - HDMI', 24999, '../images/monitores/monitor2.jpg'));
@@ -76,7 +70,7 @@ productos.push( new Producto (18, 'PLACA DE VIDEO PNY GEFORCE GTX 1660TI 6GB DDR
 
 function cargarCarrito() {
     /*let elementoCarrito = new ElementoCarrito(
-        new Producto(1, 'Muffin', 1.99, './img/muffin.jpg'),
+        new Producto(1, 'MONITOR LED 22" ASUS FULL HD 60Hz 1Ms VP228HE-J', 41339, '../img/monitor1.jpg'),
         1
     );
 
@@ -136,7 +130,7 @@ function dibujarCarrito() {
         `;
     }
 
-    //OPERADOR TERNARIO
+    // DESAFIO OPERADOR TERNARIO
     // elementosCarrito.length == 0 ? contenedorFooterCarrito.innerHTML = `
     //         <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
     //     ` : contenedorFooterCarrito.innerHTML = `
@@ -181,14 +175,13 @@ function crearCard(producto) {
     carta.append(imagen);
     carta.append(cuerpoCarta);
 
-    //Contenedor Card
+    //Contenedor de la Card
     //let contenedorCarta = document.createElement("div");
     //contenedorCarta.className = "col-xs-6 col-sm-3 col-md-2";
     //contenedorCarta.append(carta);
 
     //Agregar algunos eventos
     botonAgregar.onclick = () => {
-        //alert("Hiciste click en el producto" + producto.nombre);
 
         let elementoExistente = elementosCarrito.find((elemento) => elemento.producto.id == producto.id);
 
@@ -230,16 +223,26 @@ function dibujarCatalogoProductos() {
 //BOTON FINALIZAR COMPRA
 let finalizar = document.querySelector('#finalizar')
 finalizar.onclick = ()=> {
-    Swal.fire({
+    if (elementosCarrito.length == 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Debes agregar algun producto'
+          })
+    } else {
+ Swal.fire({
         title: '¡La compra se ha realizado con exito!',
         imageUrl: '../images/tecnologia-y-trabajo-social-8-320.webp',
         imageWidth: 400,
         imageHeight: 200,
       })
+    }
+   
 }
 
 
 //API
+//La api utilizada convierte el precio en la moneda dolar
 async function obtenerValorDolar() {
     
     const URLDOLAR = "https://cors-anywhere.herokuapp.com/https://api-dolar-argentina.herokuapp.com/api/dolarblue";
@@ -251,5 +254,5 @@ async function obtenerValorDolar() {
 }
 
 
-//LINK PERMISO DE API
+//LINK PERMISO DE API POR SI APARECE NaN EN LUGAR DEL PRECIO EN DOLARES
 //https://cors-anywhere.herokuapp.com/corsdemo
